@@ -37,15 +37,13 @@ public class ElementServiceImpl implements ElementsService{
 	}
 
 	@Override
-	public List<Elements> getByAtomicNumber() {
-		// TODO Auto-generated method stub
-		return null;
+	public Elements getByAtomicNumber(Integer atomicNumber) {
+		return elementsRepository.getAllInfoByAtomicNumber(atomicNumber);
 	}
 
 	@Override
-	public List<Elements> getByChemicalGroup() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Elements> getByChemicalGroup(String chemicalGroup) {
+		return elementsRepository.getAllInfoByChemicalGroup(chemicalGroup);
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public interface ElementsService {
 	List<Elements> getAllElements();
 	Elements getByElementName(String elementName);
 	Elements getBySymbol(String symbol);
-	List<Elements> getByAtomicNumber();
-	List<Elements> getByChemicalGroup();
+	Elements getByAtomicNumber(Integer atomicNumber);
+	List<Elements> getByChemicalGroup(String chemicalGroup);
 	List<Elements> getByState();
 }

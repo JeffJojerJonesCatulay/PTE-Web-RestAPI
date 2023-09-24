@@ -39,7 +39,7 @@ public class ElementsController {
 	public ResponseEntity<Object> getByElementName(@PathVariable("elementName") String elementName){
 		Elements data = elementsService.getByElementName(elementName);
 		if (data == null) {
-			return Response.generateResponse("Error",  HttpStatus.NOT_FOUND, data);
+			return Response.generateResponse("No Data Found",  HttpStatus.NOT_FOUND, data);
 		}
 		return Response.generateResponse("Success", HttpStatus.OK, data);
 	}
@@ -48,7 +48,23 @@ public class ElementsController {
 	public ResponseEntity<Object> getBySymbol(@PathVariable("symbol") String symbol){
 		Elements data = elementsService.getBySymbol(symbol);
 		if (data == null) {
-			return Response.generateResponse("Error",  HttpStatus.NOT_FOUND, data);
+			return Response.generateResponse("No Data Found",  HttpStatus.NOT_FOUND, data);
+		}
+		return Response.generateResponse("Success", HttpStatus.OK, data);
+	}
+	@GetMapping("/atomicNumber/{atomicNumber}")
+	public ResponseEntity<Object> getBySymbol(@PathVariable("atomicNumber") Integer atomicNumber){
+		Elements data = elementsService.getByAtomicNumber(atomicNumber);
+		if (data == null) {
+			return Response.generateResponse("No Data Found",  HttpStatus.NOT_FOUND, data);
+		}
+		return Response.generateResponse("Success", HttpStatus.OK, data);
+	}
+	@GetMapping("/chemicalGroup/{chemicalGroup}")
+	public ResponseEntity<Object> getByChemicalGroup(@PathVariable("chemicalGroup") String chemicalGroup){
+		List<Elements> data = elementsService.getByChemicalGroup(chemicalGroup);
+		if (data.size() == 0) {
+			return Response.generateResponse("No Data Found",  HttpStatus.NOT_FOUND, data);
 		}
 		return Response.generateResponse("Success", HttpStatus.OK, data);
 	}
