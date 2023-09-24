@@ -19,4 +19,6 @@ import PTE.WEB_RESTAPI.entity.Elements;
 public interface ElementsRepository extends JpaRepository<Elements, Long> {
 	@Query(value = "SELECT id, element_name, symbol, atomic_number, chemical_group, state FROM PTE_TBL", nativeQuery = true)
     List<Elements> getAllInfo();
+	@Query(value = "SELECT id, element_name, symbol, atomic_number, chemical_group, state FROM PTE_TBL WHERE element_name = ?", nativeQuery = true)
+    Elements getAllInfoByElement(String elementName);
 }

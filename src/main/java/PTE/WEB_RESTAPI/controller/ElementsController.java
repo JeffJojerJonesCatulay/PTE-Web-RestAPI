@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ import PTE.WEB_RESTAPI.service.ElementsService;
 /**
  * @author Jeff Catulay
  * @category Rest Controller
- * @version 1.0.0
+ * @version 1.1.0
  */
 @CrossOrigin
 @RestController
@@ -31,6 +32,11 @@ public class ElementsController {
 	@GetMapping
 	public ResponseEntity<Object> getInitialDataAll(){
 		List<Elements> initialData = elementsService.getAllElements();
+		return Response.generateResponse("Success", HttpStatus.OK, initialData);
+	}
+	@GetMapping("/elementName/{elementName}")
+	public ResponseEntity<Object> getByElementName(@PathVariable("elementName") String elementName){
+		Elements initialData = elementsService.getByElementName(elementName);
 		return Response.generateResponse("Success", HttpStatus.OK, initialData);
 	}
 	

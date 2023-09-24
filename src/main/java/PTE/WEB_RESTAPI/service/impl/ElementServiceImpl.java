@@ -27,9 +27,8 @@ public class ElementServiceImpl implements ElementsService{
 	}
 
 	@Override
-	public Elements getByElementName() {
-		// TODO Auto-generated method stub
-		return null;
+	public Elements getByElementName(String elementName) {
+		return elementsRepository.getAllInfoByElement(elementName);
 	}
 
 	@Override

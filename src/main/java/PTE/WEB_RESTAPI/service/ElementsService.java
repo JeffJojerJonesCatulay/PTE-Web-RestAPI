@@ -15,7 +15,7 @@ import PTE.WEB_RESTAPI.entity.Elements;
 @Service
 public interface ElementsService {
 	List<Elements> getAllElements();
-	Elements getByElementName();
+	Elements getByElementName(String elementName);
 	Elements getBySymbol();
 	List<Elements> getByAtomicNumber();
 	List<Elements> getByChemicalGroup();
