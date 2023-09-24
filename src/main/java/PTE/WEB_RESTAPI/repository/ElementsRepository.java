@@ -27,4 +27,6 @@ public interface ElementsRepository extends JpaRepository<Elements, Long> {
 	Elements getAllInfoByAtomicNumber(Integer atomicNumber);
 	@Query(value = "SELECT id, element_name, symbol, atomic_number, chemical_group, state FROM PTE_TBL WHERE chemical_group = ?", nativeQuery = true)
     List<Elements> getAllInfoByChemicalGroup(String chemicalGroup);
+	@Query(value = "SELECT id, element_name, symbol, atomic_number, chemical_group, state FROM PTE_TBL WHERE state = ?", nativeQuery = true)
+    List<Elements> getAllInfoByState(String state);
 }

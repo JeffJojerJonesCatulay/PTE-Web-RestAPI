@@ -68,4 +68,12 @@ public class ElementsController {
 		}
 		return Response.generateResponse("Success", HttpStatus.OK, data);
 	}
+	@GetMapping("/state/{state}")
+	public ResponseEntity<Object> getByState(@PathVariable("state") String state){
+		List<Elements> data = elementsService.getByState(state);
+		if (data.size() == 0) {
+			return Response.generateResponse("No Data Found",  HttpStatus.NOT_FOUND, data);
+		}
+		return Response.generateResponse("Success", HttpStatus.OK, data);
+	}
 }

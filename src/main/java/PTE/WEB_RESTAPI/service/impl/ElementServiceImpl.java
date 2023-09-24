@@ -47,9 +47,8 @@ public class ElementServiceImpl implements ElementsService{
 	}
 
 	@Override
-	public List<Elements> getByState() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Elements> getByState(String state) {
+		return elementsRepository.getAllInfoByState(state);
 	}
 
 }
