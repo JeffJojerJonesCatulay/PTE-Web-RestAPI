@@ -31,13 +31,25 @@ public class ElementsController {
 	
 	@GetMapping
 	public ResponseEntity<Object> getInitialDataAll(){
-		List<Elements> initialData = elementsService.getAllElements();
-		return Response.generateResponse("Success", HttpStatus.OK, initialData);
-	}
-	@GetMapping("/elementName/{elementName}")
-	public ResponseEntity<Object> getByElementName(@PathVariable("elementName") String elementName){
-		Elements initialData = elementsService.getByElementName(elementName);
-		return Response.generateResponse("Success", HttpStatus.OK, initialData);
+		List<Elements> data = elementsService.getAllElements();
+		return Response.generateResponse("Success", HttpStatus.OK, data);
 	}
 	
+	@GetMapping("/elementName/{elementName}")
+	public ResponseEntity<Object> getByElementName(@PathVariable("elementName") String elementName){
+		Elements data = elementsService.getByElementName(elementName);
+		if (data == null) {
+			return Response.generateResponse("Error",  HttpStatus.NOT_FOUND, data);
+		}
+		return Response.generateResponse("Success", HttpStatus.OK, data);
+	}
+	
+	@GetMapping("/symbol/{symbol}")
+	public ResponseEntity<Object> getBySymbol(@PathVariable("symbol") String symbol){
+		Elements data = elementsService.getBySymbol(symbol);
+		if (data == null) {
+			return Response.generateResponse("Error",  HttpStatus.NOT_FOUND, data);
+		}
+		return Response.generateResponse("Success", HttpStatus.OK, data);
+	}
 }

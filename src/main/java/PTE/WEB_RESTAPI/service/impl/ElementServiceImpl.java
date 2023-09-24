@@ -13,7 +13,7 @@ import PTE.WEB_RESTAPI.service.ElementsService;
 /**
  * @author Jeff Catulay
  * @category Service
- * @version 1.0.0
+ * @version 1.1.0
  */
 @Service
 public class ElementServiceImpl implements ElementsService{
@@ -32,9 +32,8 @@ public class ElementServiceImpl implements ElementsService{
 	}
 
 	@Override
-	public Elements getBySymbol() {
-		// TODO Auto-generated method stub
-		return null;
+	public Elements getBySymbol(String symbol) {
+		return elementsRepository.getAllInfoBySymbol(symbol);
 	}
 
 	@Override
